@@ -1,0 +1,36 @@
+{
+  "name": "jmoore.dev.2",
+  "version": "0.0.0",
+  "description": "My new site?",
+  "main": "lmao.js",
+  "engines": {
+    "node": ">=14.x.x",
+    "npm": ">=7.x.x"
+  },
+  "scripts": {
+    "start": "node lmao.js",
+    "release": "np",
+    "test": "echo test passed"
+  },
+  "repository": "github:tycrek/jmoore.dev.2",
+  "keywords": [
+    "josh",
+    "moore",
+    "developer",
+    "tycrek",
+    "personal",
+    "website"
+  ],
+  "author": "tycrek <t@tycrek.com> (https://tycrek.com/)",
+  "license": "ISC",
+  "bugs": "https://github.com/tycrek/jmoore.dev.2/issues",
+  "homepage": "https://github.com/tycrek/jmoore.dev.2#readme",
+  "dependencies": {
+    "@tycrek/isprod": "^2.0.2",
+    "@tycrek/log": "^0.5.6",
+    "express": "^4.17.1",
+    "fs-extra": "^10.0.0",
+    "luxon": "^2.0.1",
+    "pug": "^3.0.2"
+  }
+}
