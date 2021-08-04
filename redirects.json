@@ -1,0 +1,24 @@
+[
+	{
+		"from": [
+			"code",
+			"github"
+		],
+		"to": "https://github.com/tycrek/"
+	},
+	{
+		"from": [
+			"donate",
+			"patreon"
+		],
+		"to": "https://patreon.com/tycrek"
+	},
+	{
+		"from": "paypal",
+		"to": "https://paypal.me/jmoore235"
+	},
+	{
+		"from": "archive",
+		"to": "https://github.com/tycrek-archive/"
+	}
+]
