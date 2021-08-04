@@ -16,7 +16,7 @@ app.disable('x-powered-by');
 // Set Express variables
 app.set('trust proxy', true);
 app.set('view engine', 'pug');
-app.set('views', path('views'));
+app.set('views', path('views/pages'));
 
 // Express logger middleware
 app.use(log.express(true));
