@@ -2,16 +2,14 @@
 
 Source code for my personal website, but "new" & "better"... maybe
 
-### Stuff I plan to use with this
+### Behind-the-scenes
 
-- **[Pug]** - My favourite templating language
-- **[jQuery]** - Cry about it & suck my bytes.
-- **[Tailwind]** - Some kind of CSS framework
-- **[Svelte]** - Some kind of UI framework
-- **[Express]** - Node web server. There may be more efficient alternatives but I really enjoy this one.
+- **[Pug]**
+- **[Tailwind]**
+- **[PostCSS]**
+- **[Express]**
 
 [Pug]: https://pugjs.org/
-[jQuery]: https://jquery.com/
 [Tailwind]: https://tailwindcss.com/
-[Svelte]: https://svelte.dev/
+[PostCSS]: https://postcss.org/
 [Express]: https://expressjs.com/
