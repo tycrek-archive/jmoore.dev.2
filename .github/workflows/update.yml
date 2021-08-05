@@ -11,4 +11,4 @@ jobs:
         with:
           url: 'https://new.jmoore.dev/update'
           method: 'GET'
-          bearerToken: ${{ secrets.UPDATE_SECRET }}
+          bearerToken: ${{ secrets.UPDATE_TOKEN }}
