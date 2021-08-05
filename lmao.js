@@ -48,6 +48,25 @@ const tailwindcss = require('tailwindcss')({
 		fontFamily: {
 			header: ['"Bebas Neue"', '"Helvetica Neue"', 'Helvetica', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 			content: ['Ubuntu', 'ui-sans-serif', 'system-ui', 'sans-serif']
+		},
+		extend: {
+			colors: {
+				'background': '#212121',
+				'article-card': '#757575',
+				'tycrek-red': {
+					light: '#F50000',
+					DEFAULT: '#D50000',
+					dark: '#B80000'
+				},
+				'tycrek-cyan': {
+					DEFAULT: '#26C6DA',
+					dark: '#0D8F8F'
+				}
+			},
+			fontSize: {
+				'title-char': '6rem',
+				'title-char-hover': '6.1rem'
+			}
 		}
 	}
 });

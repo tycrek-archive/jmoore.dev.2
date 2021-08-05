@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.title-char {
+	@apply font-header text-title-char text-tycrek-red-light drop-shadow transition-all duration-100 ease-in-out hover_text-tycrek-red hover_text-title-char-hover;
+}
+
+.article-card {
+	@apply bg-article-card p-6 rounded-2xl mb-8;
+}
+
+.article-title {
+	@apply font-header text-4xl drop-shadow;
+}
+
+.article-text {
+	@apply text-lg drop-shadow-sm;
+}
