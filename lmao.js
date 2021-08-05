@@ -58,15 +58,14 @@ const plugins = [
 	require('postcss-font-magician')(),
 ];
 
+// Compile CSS using PostCSS's JIT mode
 app.get('/css', (_, res) =>
 	fs.readFile(cssPath)
 		.then((bytes) => postcss(plugins).process(bytes, { from: cssPath, to: cssPath }))
 		.then((result) => {
-			if (result.warnings().length) {
-				log.warn('CSS', result.warnings());
-			}
+			result.warnings().forEach((warn) => log.warn('PostCSS', warn.toString()));
 			res.type('css').send(result.css)
-		}) // todo: warnings
+		})
 		.catch(log.err));
 
 // Set up redirects
@@ -90,7 +89,7 @@ app.get('/update', (req, res) => {
 		? res.sendStatus(200)
 		: res.sendStatus(401);
 
-	// Update
+	// Run update script
 	isAllowed && npm.commands['run-script'](['update'], (err) => (err) && log.err(err));
 });
 
