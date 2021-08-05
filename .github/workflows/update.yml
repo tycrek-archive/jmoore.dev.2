@@ -1,0 +1,14 @@
+name: Update
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: HTTP Request
+        uses: fjogeleit/http-request-action@v1.8.0
+        with:
+          url: 'https://new.jmoore.dev/update'
+          method: 'GET'
+          bearerToken: ${{ secrets.UPDATE_SECRET }}
