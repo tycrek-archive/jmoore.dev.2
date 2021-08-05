@@ -83,7 +83,7 @@ app.get('/update', (req, res) => {
 		return res.sendStatus(200);
 
 	// Don't attempt update if bearer token is invalid
-	const isAllowed = req.headers.authorization === UPDATE_TOKEN;
+	const isAllowed = req.headers.authorization.split(' ')[1] === UPDATE_TOKEN;
 
 	// Respond to GitHub Actions *before* calling update script
 	isAllowed
