@@ -75,5 +75,5 @@ app.get('*', (_, res) => res.render('index'));
 
 log.express().Host(app, PORT, HOST, () =>
 	fetch(`http://127.0.0.1:${PORT}/css`)
-		.then(log.info('PostCSS', 'JIT kickstarted'))
+		.then(() => log.info('PostCSS', 'JIT kickstarted'))
 		.catch(log.err));
