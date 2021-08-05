@@ -64,7 +64,8 @@ const tailwindcss = require('tailwindcss')({
 				}
 			},
 			fontSize: {
-				'title-char': '6rem',
+				'title-char': '4rem',
+				'title-char-lg': '6rem',
 				'title-char-hover': '6.1rem'
 			}
 		}

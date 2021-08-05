@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .title-char {
-	@apply font-header text-title-char text-tycrek-red-light drop-shadow transition-all duration-100 ease-in-out hover_text-tycrek-red hover_text-title-char-hover;
+	@apply font-header text-title-char md_text-title-char-lg text-tycrek-red-light drop-shadow transition-all duration-100 ease-in-out hover_text-tycrek-red md_hover_text-title-char-hover;
 }
 
 .article-card {
-	@apply bg-article-card p-6 rounded-2xl mb-8;
+	@apply bg-gray-800 p-6 rounded-2xl mb-8 border-gray-700 border-2 shadow-lg;
 }
 
 .article-title {
