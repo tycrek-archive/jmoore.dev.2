@@ -1,3 +1,4 @@
+const { UPDATE_TOKEN } = require('./secrets.json');
 const { PORT, HOST } = require('./config.json');
 const { log, isProd, path } = require('./utils');
 
@@ -6,6 +7,8 @@ const fs = require('fs-extra');
 const express = require('express');
 const postcss = require('postcss');
 const fetch = require('node-fetch');
+const npm = require('npm');
+npm.load();
 
 // Welcome!
 log.info('jmoore.dev', 'starting...', isProd ? 'production' : 'development');
@@ -71,6 +74,27 @@ const makeRedir = (from, to) => app.get(`/${from}`, (_, res) => res.redirect(to)
 fs.readJsonSync(path('redirects.json')).forEach(({ from, to }) =>
 	Array.isArray(from) ? from.forEach((f) => makeRedir(f, to)) : makeRedir(from, to));
 
+// Auto-update
+app.get('/update', (req, res) => {
+	log.info('Update', 'requested');
+
+	// Don't attempt update if not in production
+	if (!isProd)
+		return res.sendStatus(200);
+
+	// Don't attempt update if bearer token is invalid
+	const isAllowed = req.headers.authorization === UPDATE_TOKEN;
+
+	// Respond to GitHub Actions *before* calling update script
+	isAllowed
+		? res.sendStatus(200)
+		: res.sendStatus(401);
+
+	// Update
+	isAllowed && npm.commands['run-script'](['update'], (err) => (err) && log.err(err));
+});
+
+// All other routes
 app.get('*', (_, res) => res.render('index'));
 
 log.express().Host(app, PORT, HOST, () =>

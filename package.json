@@ -9,6 +9,8 @@
   },
   "scripts": {
     "start": "node lmao.js",
+    "update": "git pull origin master && npm i",
+    "postupdate": "sudo systemctl restart node-jmoore.dev.2.service",
     "release": "np",
     "test": "echo test passed"
   },
@@ -34,6 +36,7 @@
     "fs-extra": "^10.0.0",
     "luxon": "^2.0.1",
     "node-fetch": "^2.6.1",
+    "npm": "^7.20.3",
     "postcss": "^8.3.6",
     "postcss-font-magician": "^3.0.0",
     "pug": "^3.0.2",
