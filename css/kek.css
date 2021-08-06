@@ -7,7 +7,7 @@
 }
 
 .article-card {
-	@apply bg-zahtec from-zahtec-teal via-zahtec-magenta to-zahtec-brown/* bg-gray-800 */ p-6 rounded-2xl mb-8 /* border-gray-700 border-2 */ shadow-lg;
+	@apply flex-grow bg-zahtec from-zahtec-teal via-zahtec-magenta to-zahtec-brown/* bg-gray-800 */ p-6 rounded-2xl mb-8 /* border-gray-700 border-2 */ shadow-lg;
 }
 
 .article-title {
