@@ -61,7 +61,15 @@ const tailwindcss = require('tailwindcss')({
 				'tycrek-cyan': {
 					DEFAULT: '#26C6DA',
 					dark: '#0D8F8F'
+				},
+				'zahtec': {
+					teal: '#096173',
+					magenta: '#860995',
+					brown: '#8C0E3B'
 				}
+			},
+			backgroundImage: {
+				zahtec: 'linear-gradient(39deg, var(--tw-gradient-stops));'
 			},
 			fontSize: {
 				'title-char': '4rem',
