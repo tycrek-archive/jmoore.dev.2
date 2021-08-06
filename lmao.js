@@ -7,6 +7,9 @@ const fs = require('fs-extra');
 const express = require('express');
 const postcss = require('postcss');
 const fetch = require('node-fetch');
+const uaRedirect = require('express-ua-redirect');
+
+// Load NPM for the autoupdater
 const npm = require('npm');
 npm.load();
 
@@ -27,6 +30,12 @@ app.set('views', path('views/pages'));
 
 // Express logger middleware
 app.use(log.express(true));
+
+// Fuck Internet Explorer!
+app.use(uaRedirect({
+	browsers: { unauthorized: { IE: '11-' } },
+	redirectTo: 'http://www.browsingbetter.com/'
+}));
 
 // Custom headers
 app.use((_, res, next) => {
