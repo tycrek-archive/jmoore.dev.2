@@ -11,7 +11,7 @@
 }
 
 .article-title {
-	@apply font-header text-4xl text-shadow-sm;
+	@apply font-header text-4xl text-shadow-sm mb-4;
 }
 
 .article-text {
