@@ -13,7 +13,7 @@
 		focus_bg-gray-50 dark_focus_bg-gray-700 /* Both themes colours, focused */
 		border-gray-300 focus_border-gray-500 /* Light theme border */
 		dark_border-gray-700 dark_focus_border-gray-900 /* Dark theme border */
-		text-lg px-4 py-2 my-4 border-2 rounded-full outline-none transition-all ease-in-out;
+		truncate font-content text-lg px-4 py-2 my-2 border-2 rounded-full outline-none transition-all ease-in-out;
 }
 
 .title-char {

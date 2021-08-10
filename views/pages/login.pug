@@ -2,5 +2,11 @@ extends ../_main
 block content
 	.article-card
 		h2.article-title Login
-		p.article-text Enter the password to continue:
-		input.input-field-theme(type='tel' placeholder='12345678')
+		.flex.flex-col.items-center
+			.flex.flex-col.md_flex-row.items-left.items-center
+				h3.text-black.dark_text-gray-100.text-2xl.font-header Password
+				input.w-64.md_w-96.ml-4.input-field-theme#pass(type='password' placeholder='Password')
+			.flex.flex-col.md_flex-row.items-left.items-center
+				h3.text-black.dark_text-gray-100.text-2xl.font-header TOTP code
+				input.w-64.md_w-96.ml-4.input-field-theme#code(type='tel' placeholder='TOTP code')
+			button.px-4.py-2.my-2.border-2.border-gray-300.dark_border-gray-700.rounded-full.font-content(onclick='verify()') Login
