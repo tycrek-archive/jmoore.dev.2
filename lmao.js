@@ -92,6 +92,8 @@ const tailwindcss = require('tailwindcss')({
 			textShadow: {
 				'sm-hard': '2px 2px #000'
 			},
+			transitionTimingFunction: {
+				'seb-transition': 'cubic-bezier(0.68, -0.45, 0.365, 1.55)'
 			}
 		}
 	}
