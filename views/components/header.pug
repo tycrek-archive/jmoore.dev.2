@@ -1,11 +1,14 @@
+mixin char(letter)
+	h1.title-char(onclick='window.location="/";' title='Go home')= letter
+
 .h-24.md_h-32.flex.justify-center.content-center
-	h1.title-char j
-	h1.title-char m
-	h1.title-char o
-	h1.title-char o
-	h1.title-char r
-	h1.title-char e
-	h1.title-char .
-	h1.title-char d
-	h1.title-char e
-	h1.title-char v
+	+char('j')
+	+char('m')
+	+char('o')
+	+char('o')
+	+char('r')
+	+char('e')
+	+char('.')
+	+char('d')
+	+char('e')
+	+char('v')
