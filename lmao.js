@@ -141,6 +141,7 @@ app.get('/update', (req, res) => {
 });
 
 // All other routes
+app.get('/login', (_, res) => res.render('login'));
 app.get('*', (_, res) => res.render('index'));
 
 log.express().Host(app, PORT, HOST, () =>
