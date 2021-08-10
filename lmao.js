@@ -49,14 +49,18 @@ const tailwindcss = require('tailwindcss')({
 	mode: 'jit',
 	separator: '_',
 	darkMode: 'media',
+	plugins: [
+		require('tailwindcss-textshadow')
+	],
 	purge: {
 		enabled: false,
 		content: ['./views/**/*.pug']
 	},
 	theme: {
 		fontFamily: {
-			header: ['"Bebas Neue"', '"Helvetica Neue"', 'Helvetica', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-			content: ['Ubuntu', 'ui-sans-serif', 'system-ui', 'sans-serif']
+			title: ['"Bebas Neue"', '"Helvetica Neue"', 'Helvetica', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+			header: ['"Patua One"', '"Helvetica Neue"', 'Helvetica', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+			content: ['"Poppins"', 'ui-sans-serif', 'system-ui', 'sans-serif']
 		},
 		extend: {
 			colors: {
@@ -84,6 +88,10 @@ const tailwindcss = require('tailwindcss')({
 				'title-char': '4rem',
 				'title-char-lg': '6rem',
 				'title-char-hover': '6.1rem'
+			},
+			textShadow: {
+				'sm-hard': '2px 2px #000'
+			},
 			}
 		}
 	}

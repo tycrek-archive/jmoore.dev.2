@@ -41,6 +41,7 @@
     "postcss": "^8.3.6",
     "postcss-font-magician": "^3.0.0",
     "pug": "^3.0.2",
-    "tailwindcss": "^2.2.7"
+    "tailwindcss": "^2.2.7",
+    "tailwindcss-textshadow": "^2.1.3"
   }
 }
