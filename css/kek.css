@@ -5,6 +5,17 @@
 .base-theme {
 	@apply bg-gray-200 text-black dark_bg-gray-900 dark_text-gray-100 font-content;
 }
+
+.input-field-theme {
+	@apply
+		bg-gray-200 text-black /* Light theme, unfocused */
+		dark_bg-gray-900 dark_text-gray-100 /* Dark theme, unfocused */
+		focus_bg-gray-50 dark_focus_bg-gray-700 /* Both themes colours, focused */
+		border-gray-300 focus_border-gray-500 /* Light theme border */
+		dark_border-gray-700 dark_focus_border-gray-900 /* Dark theme border */
+		text-lg px-4 py-2 my-4 border-2 rounded-full outline-none transition-all ease-in-out;
+}
+
 .title-char {
 	@apply font-title text-title-char md_text-title-char-lg text-tycrek-red-light text-shadow-sm-hard cursor-pointer select-none transition-all duration-100 ease-in-out hover_text-tycrek-red md_hover_text-title-char-hover;
 }
