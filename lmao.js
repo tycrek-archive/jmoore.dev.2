@@ -1,4 +1,4 @@
-const { UPDATE_TOKEN } = require('./secrets.json');
+const { UPDATE_TOKEN, PASSWORD, TOTP_SECRET } = require('./secrets.json');
 const { PORT, HOST } = require('./config.json');
 const { log, isProd, path } = require('./utils');
 
@@ -8,6 +8,7 @@ const express = require('express');
 const postcss = require('postcss');
 const fetch = require('node-fetch');
 const uaRedirect = require('express-ua-redirect');
+const { authenticator } = require('otplib');
 
 // Load NPM for the autoupdater
 const npm = require('npm');
@@ -142,6 +143,19 @@ app.get('/update', (req, res) => {
 
 // All other routes
 app.get('/login', (_, res) => res.render('login'));
+app.get('/login/:password/:key', (req, res) => {
+	let isValid = false;
+	try {
+		isValid = (PASSWORD === req.params.password) && (authenticator.generate(TOTP_SECRET) === req.params.key);
+	} catch (err) {
+		// Possible errors
+		// - options validation
+		// - "Invalid input - it is not base32 encoded string" (if thiry-two is used)
+		log.err(err);
+	} finally {
+		res.sendStatus(isValid ? 200 : 401);
+	}
+});
 app.get('*', (_, res) => res.render('index'));
 
 log.express().Host(app, PORT, HOST, () =>

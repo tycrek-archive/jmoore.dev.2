@@ -10,3 +10,10 @@ block content
 				h3.text-black.dark_text-gray-100.text-2xl.font-header TOTP code
 				input.w-64.md_w-96.ml-4.input-field-theme#code(type='tel' placeholder='TOTP code')
 			button.px-4.py-2.my-2.border-2.border-gray-300.dark_border-gray-700.rounded-full.font-content(onclick='verify()') Login
+	
+	script.
+		function verify() {
+			const pass = document.getElementById("pass").value;
+			const code = document.getElementById("code").value;
+			fetch(`/login/${pass}/${code}`)
+		}
