@@ -1,6 +1,6 @@
 const { UPDATE_TOKEN, PASSWORD, TOTP_SECRET } = require('./secrets.json');
 const { PORT, HOST } = require('./config.json');
-const { log, isProd, path } = require('./utils');
+const { log, isProd, path, randomHexValue } = require('./utils');
 
 // Imports
 const fs = require('fs-extra');
@@ -8,6 +8,8 @@ const express = require('express');
 const postcss = require('postcss');
 const fetch = require('node-fetch');
 const uaRedirect = require('express-ua-redirect');
+const session = require('express-session');
+const MemoryStore = require('memorystore')(session)
 const { authenticator } = require('otplib');
 
 // Load NPM for the autoupdater
@@ -37,6 +39,20 @@ app.use(uaRedirect({
 	browsers: { unauthorized: { IE: '11-' } },
 	redirectTo: 'http://www.browsingbetter.com/'
 }));
+
+// Sessions
+const TIME_24H = 86400000;
+app.use(session({
+	secure: isProd,
+	resave: true,
+	saveUninitialized: false,
+	secret: randomHexValue(64),
+	cookie: { maxAge: TIME_24H },
+	store: new MemoryStore({ checkPeriod: TIME_24H }),
+}));
+
+// Set up session
+app.use((req, _res, next) => (((!req.session.isAuthed) && (req.session.isAuthed = false)), next()));
 
 // Custom headers
 app.use((_, res, next) => {
@@ -144,18 +160,19 @@ app.get('/update', (req, res) => {
 // All other routes
 app.get('/login', (_, res) => res.render('login'));
 app.get('/login/:password/:key', (req, res) => {
-	let isValid = false;
 	try {
-		isValid = (PASSWORD === req.params.password) && (authenticator.generate(TOTP_SECRET) === req.params.key);
+		req.session.isAuthed = (PASSWORD === req.params.password) && (authenticator.generate(TOTP_SECRET) === req.params.key);
 	} catch (err) {
 		// Possible errors
 		// - options validation
 		// - "Invalid input - it is not base32 encoded string" (if thiry-two is used)
 		log.err(err);
 	} finally {
-		res.sendStatus(isValid ? 200 : 401);
+		res.sendStatus(req.session.isAuthed ? 200 : 401);
 	}
 });
+app.get('/verify', (req, res) => res.type('text').send(`${req.session.isAuthed}`));
+
 app.get('*', (_, res) => res.render('index'));
 
 log.express().Host(app, PORT, HOST, () =>
