@@ -25,11 +25,11 @@
 }
 
 .article-title {
-	@apply font-header text-4xl text-shadow-sm mb-4;
+	@apply font-header text-4xl text-shadow-sm dark_text-shadow-lg mb-4;
 }
 
 .article-text {
-	@apply text-lg drop-shadow-sm;
+	@apply text-lg text-shadow-sm;
 }
 
 .zahtec-gradient {
