@@ -1,0 +1,15 @@
+User-Agent: hey-you
+Disallow: /get-out-of-here
+
+User-Agent: seriously-though
+Disallow: /why-are-you
+
+User-Agent: in-my
+Disallow: /robots.txt?
+
+User-agent: *
+Disallow: /login*
+Disallow: /logout*
+Disallow: /dashboard*
+Disallow: /api*
+Allow: /
