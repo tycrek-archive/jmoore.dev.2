@@ -60,6 +60,9 @@ app.use((_, res, next) => {
 	next();
 });
 
+// Static assets
+app.use(express.static(path('static')));
+
 // CSS
 const cssPath = path('css/kek.css');
 const tailwindcss = require('tailwindcss')({
@@ -123,7 +126,7 @@ const plugins = [
 ];
 
 // Index
-app.get('/', (_, res) => res.render('index'));
+app.get('/', (_, res) => res.render('index', { isProd }));
 
 // Compile CSS using PostCSS's JIT mode
 app.get('/css', (_, res) =>
@@ -161,7 +164,7 @@ app.get('/update', (req, res) => {
 });
 
 // Login
-app.get('/login', (_, res) => res.render('login'));
+app.get('/login', (_, res) => res.render('login', { isProd }));
 app.get('/login/:password/:key', (req, res) => {
 	try {
 		req.session.isAuthed = (PASSWORD === req.params.password) && (authenticator.generate(TOTP_SECRET) === req.params.key);
@@ -179,14 +182,14 @@ app.get('/login/:password/:key', (req, res) => {
 app.get('/logout', (req, res) => ((req.session.isAuthed = false), res.redirect('/login')));
 
 // Verify login
-app.get('/verify', (req, res) => res.render('verify', { isAuthed: req.session.isAuthed ? 'Yep, visit the dashboard!' : 'Nope, please sign in.' }));
+app.get('/verify', (req, res) => res.render('verify', { isProd, isAuthed: req.session.isAuthed ? 'Yep, visit the dashboard!' : 'Nope, please sign in.' }));
 
 function verifySession(req, res, next) {
 	(req.session.isAuthed) ? next() : res.redirect('/login');
 }
 
 // Dashboard
-app.get('/dashboard', verifySession, (_req, res) => res.render('dashboard'));
+app.get('/dashboard', verifySession, (_req, res) => res.render('dashboard', { isProd }));
 
 // All other routes
 
