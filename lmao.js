@@ -122,6 +122,9 @@ const plugins = [
 	require('postcss-font-magician')(),
 ];
 
+// Index
+app.get('/', (_, res) => res.render('index'));
+
 // Compile CSS using PostCSS's JIT mode
 app.get('/css', (_, res) =>
 	fs.readFile(cssPath)
@@ -157,7 +160,7 @@ app.get('/update', (req, res) => {
 	isAllowed && npm.commands['run-script'](['update'], (err) => (err) && log.err(err));
 });
 
-// All other routes
+// Login
 app.get('/login', (_, res) => res.render('login'));
 app.get('/login/:password/:key', (req, res) => {
 	try {
@@ -168,12 +171,24 @@ app.get('/login/:password/:key', (req, res) => {
 		// - "Invalid input - it is not base32 encoded string" (if thiry-two is used)
 		log.err(err);
 	} finally {
-		res.sendStatus(req.session.isAuthed ? 200 : 401);
+		req.session.isAuthed ? res.type('json').send({ url: '/dashboard' }) : res.sendStatus(401);
 	}
 });
-app.get('/verify', (req, res) => res.type('text').send(`${req.session.isAuthed}`));
 
-app.get('*', (_, res) => res.render('index'));
+// Logout
+app.get('/logout', (req, res) => ((req.session.isAuthed = false), res.redirect('/login')));
+
+// Verify login
+app.get('/verify', (req, res) => res.render('verify', { isAuthed: req.session.isAuthed ? 'Yep, visit the dashboard!' : 'Nope, please sign in.' }));
+
+function verifySession(req, res, next) {
+	(req.session.isAuthed) ? next() : res.redirect('/login');
+}
+
+// Dashboard
+app.get('/dashboard', verifySession, (_req, res) => res.render('dashboard'));
+
+// All other routes
 
 log.express().Host(app, PORT, HOST, () =>
 	fetch(`http://127.0.0.1:${PORT}/css`)
