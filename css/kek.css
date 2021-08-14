@@ -21,7 +21,7 @@
 }
 
 .article-card {
-	@apply flex-grow bg-gray-100 dark_bg-gray-800 p-6 rounded-2xl border-gray-700 border-2 shadow-lg;
+	@apply flex-grow bg-gray-100 dark_bg-gray-800 p-6 rounded-lg border-gray-700 border-2 shadow-lg;
 }
 
 .article-title {
