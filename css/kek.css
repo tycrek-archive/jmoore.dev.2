@@ -33,7 +33,7 @@
 }
 
 .t-button {
-	@apply px-4 py-2 my-2 border-2 rounded-full font-content
+	@apply px-4 py-2 my-2 border-2 rounded-lg font-content
 		dark_bg-gray-800 dark_hover_bg-gray-700 dark_active_bg-gray-800 border-gray-300 dark_border-gray-700 transition-all ease-in-out duration-100;
 }
 
