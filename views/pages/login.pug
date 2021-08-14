@@ -4,10 +4,10 @@ block content
 		h2.article-title Login
 		.flex.flex-col.items-center
 			.flex.flex-col.md_flex-row.items-left.items-center
-				h3.text-black.dark_text-gray-100.text-2xl.font-forms Password
+				h3.text-black.dark_text-gray-100.text-2xl.font-forms.font-semibold Password
 				input.w-64.md_w-96.ml-4.input-field-theme#pass(type='password' placeholder='Password')
 			.flex.flex-col.md_flex-row.items-left.items-center
-				h3.text-black.dark_text-gray-100.text-2xl.font-forms.whitespace-nowrap TOTP code
+				h3.text-black.dark_text-gray-100.text-2xl.font-forms.font-semibold.whitespace-nowrap TOTP code
 				input.w-64.md_w-96.ml-4.input-field-theme#code(type='tel' placeholder='TOTP code')
 			button.t-button(onclick='verify()') Login
 	
