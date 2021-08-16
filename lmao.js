@@ -63,6 +63,9 @@ app.use((_, res, next) => {
 // Static assets
 app.use(express.static(path('static')));
 
+// Custom totem
+app.use('/custom-totem', require('./routers/custom-totem'));
+
 // CSS
 const cssPath = path('css/kek.css');
 const tailwindcss = require('tailwindcss')({

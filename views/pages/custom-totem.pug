@@ -1,0 +1,24 @@
+extends ../_main
+block meta
+	title Custom Minecraft Totem Generator
+	meta(name='description' content='Turn your Minecraft skin into a Totem of Undying (for Minecraft 1.12.2)')
+block content
+	.article-card
+		h2.article-title Custom Minecraft Totem Generator
+		p.article-text This tool will create a custom Totem of Undying texture for Minecraft 1.12.2 based on the skin of your username. Eventually I may add support for other versions.
+		br
+		p.article-text To use this tool, just enter your Minecraft username, click Download, and save the .zip file to #[code .minecraft/resourcepacks]. In game, place the pack at the top of your resource pack list (it is compatible with all other resource packs).
+		br
+		input.input-field.mr-4.w-64.max-w-full#username(type='text' placeholder='Username')
+		button.t-button(onclick='download();') Download
+		br
+		br
+		p.article-text Big thanks to #[a.t-link(href='http://minotar.net' target='_blank') Minotar.net] and #[a.t-link(href="https://github.com/oliver-moran/jimp#readme" target='_blank') Jimp] for making this project possible.
+	script.
+		function download() {
+			const name = $('#username').val();
+			(name.length === 0 || name === '')
+				? alert('Enter a username')
+				: window.location = `/custom-totem/totem/${name}`;
+			return false;
+		}
