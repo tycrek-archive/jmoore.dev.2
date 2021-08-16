@@ -202,14 +202,14 @@ app.get('/dashboard', verifySession, (_req, res) => res.render('dashboard', { is
 // Upload
 app.post('/upload', verifySession, (req, res, next) => {
 	if (!req.files || Object.keys(req.files).length === 0)
-		return res.status(400).send('No files were uploaded');
+		return res.status(400).render('woops', { message: 'No files were uploaded' });
 
 	const { file } = req.files;
 	const saveTo = path('uploads', file.name);
 
 	fs.pathExists(saveTo)
 		.then((exists) => exists
-			? res.status(409).send('File already exists')
+			? res.status(409).render('woops', { message: `File already exists: <a class='t-link' href='/files/${file.name}' target='_blank'>${file.name}</a>` })
 			: fs.ensureDir(path('uploads'))
 				.then(() => file.mv(saveTo))
 				.then(() => log.info('File uploaded', file.name).callback(() => res.render('upload', { isProd, fileName: file.name }))))
