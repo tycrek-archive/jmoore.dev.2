@@ -8,6 +8,7 @@
     "npm": ">=7.x.x"
   },
   "scripts": {
+    "start:dev": "nodemon",
     "start": "node lmao.js",
     "update": "git pull origin master && npm i",
     "postupdate": "sudo systemctl restart node-jmoore.dev.2.service",
