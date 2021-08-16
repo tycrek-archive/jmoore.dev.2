@@ -33,7 +33,7 @@
 }
 
 .article-text {
-	@apply text-lg text-shadow-sm;
+	@apply text-lg text-shadow-sm font-light;
 }
 
 .t-button {
@@ -42,7 +42,7 @@
 }
 
 .t-link {
-	@apply text-tycrek-cyan;
+	@apply text-tycrek-cyan font-normal;
 }
 
 .zahtec-gradient {
