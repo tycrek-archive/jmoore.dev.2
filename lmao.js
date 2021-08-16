@@ -91,6 +91,9 @@ const tailwindcss = require('tailwindcss')({
 			content: ['"Poppins"', 'ui-sans-serif', 'system-ui', 'sans-serif']
 		},
 		extend: {
+			height: {
+				nav: '66vh'
+			},
 			colors: {
 				'background': '#212121',
 				'article-card': '#757575',
