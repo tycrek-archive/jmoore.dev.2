@@ -1,0 +1,10 @@
+extends ../../../../../_main
+block meta
+	- const title = 'Install & Configure Caddy as an Express.js reverse proxy';
+	title= title
+	meta(name='description', content='The easiest way to set up Caddy as a reverse proxy to an Express.js app')
+block content
+	.flex.flex-grow.justify-center.lg_flex-wrap.flex-col.lg_flex-row.space-y-8
+		.article-card
+			h2.article-title= title
+		include tutorial

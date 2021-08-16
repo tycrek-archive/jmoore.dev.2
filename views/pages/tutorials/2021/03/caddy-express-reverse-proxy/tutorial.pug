@@ -1,0 +1,28 @@
+.article-card
+	h3.article-title Preamble
+	p.article-text I didn't like how #[a(href='https://caddyserver.com/docs/getting-started' target='_blank') Caddy's official Getting Started guide] was written, so I made my own guide that I feel is much easier to follow.
+	br
+	p.article-text This guide will configure Caddy to:
+	ul.article-text.list-disc.list-inside
+		li automatically register &amp; renew HTTPS certificates for your domain
+		li redirect HTTP requests to HTTPS
+		li redirect www. to non-www.
+.article-card
+	h3.article-title Requirements
+	ul.article-text.list-disc.list-inside
+		li A Debian/Ubuntu-based Linux server
+		li An existing Express.js app
+		li #[code root] command line access (and a basic understanding of using a terminal)
+		li A domain name with A and AAAA records pointing towards your server
+.article-card
+	h3.article-title Step 1 - Remove or disable existing webservers
+	p.article-text If you want to remove any existing webservers, run the following command:
+	pre: code.language-bash.
+		sudo apt remove apache2 nginx nginx-common lighttpd
+	p.article-text This will remove Apache, Nginx, and lighttpd.
+	br
+	p.article-text If you just want to disable these, run these commands:
+	pre: code.language-bash.
+		sudo systemctl stop apache2 nginx lighttpd
+		sudo systemctl disable apache2 nginx lighttpd
+	p.article-text This will stop any running webservers and disable them from running on startup.
