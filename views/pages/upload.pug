@@ -1,0 +1,5 @@
+extends ../_main
+block content
+	.article-card.flex-grow
+		h2.article-title.flex-grow File uploaded
+		p.article-text.font-bold #[a.t-link(href=`/files/${fileName}` target='_blank')= fileName] was uploaded successfully.

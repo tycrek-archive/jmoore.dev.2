@@ -1,6 +1,12 @@
 extends ../../_main
 block content
-	.article-card
-		h2.article-title Welcome, tycrek
-		p.article-text This is the dashboard.
-		button.t-button(onclick='window.location = "/logout"') Logout
+		.article-card
+			h2.article-title.whitespace-nowrap Welcome, tycrek
+			p.article-text This is the dashboard.
+			button.t-button(onclick='window.location = "/logout"') Logout
+		.w-min.article-card.lg_max-w-min
+			h2.article-title Upload
+			form(method='POST' action='/upload' encType='multipart/form-data')
+				input.input-file#file(name='file' type='file')
+				br
+				input.t-button(type='submit' value='Upload')

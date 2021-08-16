@@ -8,7 +8,7 @@ const express = require('express');
 const postcss = require('postcss');
 const fetch = require('node-fetch');
 const uaRedirect = require('express-ua-redirect');
-const fileUpload = (require('express-fileupload')());
+const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session)
 const { authenticator } = require('otplib');
@@ -55,6 +55,9 @@ app.use(session({
 // Set up session
 app.use((req, _res, next) => (((!req.session.isAuthed) && (req.session.isAuthed = false)), next()));
 
+// File upload
+app.use(fileUpload());
+
 // Custom headers
 app.use((_, res, next) => {
 	res.set('Server', 'Gucci Toilet');
@@ -63,6 +66,7 @@ app.use((_, res, next) => {
 
 // Static assets
 app.use(express.static(path('static')));
+app.use('/files', express.static(path('uploads')));
 
 // Custom totem
 app.use('/custom-totem', require('./routers/custom-totem'));
@@ -208,7 +212,7 @@ app.post('/upload', verifySession, (req, res, next) => {
 			? res.status(409).send('File already exists')
 			: fs.ensureDir(path('uploads'))
 				.then(() => file.mv(saveTo))
-				.then(() => log.info('File uploaded', file.name).callback(res.render, 'upload', { isProd, fileName: file.name })))
+				.then(() => log.info('File uploaded', file.name).callback(() => res.render('upload', { isProd, fileName: file.name }))))
 		.catch(next);
 });
 
