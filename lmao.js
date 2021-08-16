@@ -68,8 +68,11 @@ app.use((_, res, next) => {
 app.use(express.static(path('static')));
 app.use('/files', express.static(path('uploads')));
 
-// Custom totem
+// Custom totem router
 app.use('/custom-totem', require('./routers/custom-totem'));
+
+// Tutorials router
+app.use('/tutorials', require('./routers/tutorials'));
 
 // CSS
 const cssPath = path('css/kek.css');
