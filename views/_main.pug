@@ -4,5 +4,11 @@ html(lang='en')
 	body.base-theme.pb-8
 		include components/header
 		.flex.justify-center
-			.w-screen.px-8.flex.justify-center.flex-wrap(class='md_w-2/3')
-				block content
+			.px-8.flex.justify-center.items-center.lg_items-start.flex-col.lg_flex-row(class='lg_w-3/4 2xl_w-2/3')
+				.article-card.mb-8.h-full.max-w-min.lg_order-last.lg_ml-8
+					h2.article-title Links
+					ul.article-text.list-disc.list-inside.whitespace-nowrap
+						li: a.t-link(href='https://tycrek.com/' target='_blank') Contact me
+						li: a.t-link(href='https://old.jmoore.dev/' target='_blank') Old site
+				.flex-grow.flex.justify-center.flex-wrap
+					block content
