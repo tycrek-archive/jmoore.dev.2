@@ -6,6 +6,12 @@
 	@apply bg-gray-200 text-black dark_bg-gray-900 dark_text-gray-100 font-content;
 }
 
+.space-8 {
+	@apply
+		space-x-0 lg_space-x-8
+		space-y-8 lg_space-y-0;
+}
+
 .input-name {
 	@apply text-black dark_text-gray-100 text-2xl font-header font-medium whitespace-nowrap;
 }
