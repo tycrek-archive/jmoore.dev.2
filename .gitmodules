@@ -1,0 +1,3 @@
+[submodule "apps/highlightjs"]
+	path = apps/highlightjs
+	url = https://github.com/dracula/highlightjs.git
