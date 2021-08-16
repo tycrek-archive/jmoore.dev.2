@@ -80,7 +80,6 @@ const tailwindcss = require('tailwindcss')({
 		fontFamily: {
 			title: ['"Bebas Neue"', '"Helvetica Neue"', 'Helvetica', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 			header: ['"Patua One"', '"Helvetica Neue"', 'Helvetica', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-			forms: ['Lora', 'ui-serif', 'system-ui', 'serif'],
 			content: ['"Poppins"', 'ui-sans-serif', 'system-ui', 'sans-serif']
 		},
 		extend: {
