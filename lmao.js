@@ -8,6 +8,7 @@ const express = require('express');
 const postcss = require('postcss');
 const fetch = require('node-fetch');
 const uaRedirect = require('express-ua-redirect');
+const fileUpload = (require('express-fileupload')());
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session)
 const { authenticator } = require('otplib');
@@ -194,7 +195,22 @@ function verifySession(req, res, next) {
 // Dashboard
 app.get('/dashboard', verifySession, (_req, res) => res.render('dashboard', { isProd }));
 
-// All other routes
+// Upload
+app.post('/upload', verifySession, (req, res, next) => {
+	if (!req.files || Object.keys(req.files).length === 0)
+		return res.status(400).send('No files were uploaded');
+
+	const { file } = req.files;
+	const saveTo = path('uploads', file.name);
+
+	fs.pathExists(saveTo)
+		.then((exists) => exists
+			? res.status(409).send('File already exists')
+			: fs.ensureDir(path('uploads'))
+				.then(() => file.mv(saveTo))
+				.then(() => log.info('File uploaded', file.name).callback(res.render, 'upload', { isProd, fileName: file.name })))
+		.catch(next);
+});
 
 log.express().Host(app, PORT, HOST, () =>
 	fetch(`http://127.0.0.1:${PORT}/css`)
