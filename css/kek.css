@@ -37,6 +37,10 @@
 		dark_bg-gray-800 dark_hover_bg-gray-700 dark_active_bg-gray-800 border-gray-300 dark_border-gray-700 transition-all ease-in-out duration-100;
 }
 
+.t-link {
+	@apply text-tycrek-cyan;
+}
+
 .zahtec-gradient {
 	@apply bg-zahtec from-zahtec-teal via-zahtec-magenta to-zahtec-brown;
 }
