@@ -17,7 +17,7 @@
 }
 
 .title-char {
-	@apply font-title text-title-char md_text-title-char-lg text-tycrek-red-light text-shadow-sm-hard cursor-pointer select-none transition-all duration-100 ease-in-out hover_text-tycrek-red md_hover_text-title-char-hover;
+	@apply font-title text-title-char lg_text-title-char-lg text-tycrek-red-light text-shadow-sm-hard cursor-pointer select-none transition-all duration-100 ease-in-out hover_text-tycrek-red lg_hover_text-title-char-hover;
 }
 
 .article-card {
