@@ -6,7 +6,11 @@
 	@apply bg-gray-200 text-black dark_bg-gray-900 dark_text-gray-100 font-content;
 }
 
-.input-field-theme {
+.input-name {
+	@apply text-black dark_text-gray-100 text-2xl font-header font-medium whitespace-nowrap;
+}
+
+.input-field {
 	@apply
 		bg-gray-200 text-black /* Light theme, unfocused */
 		dark_bg-gray-900 dark_text-gray-100 /* Dark theme, unfocused */
