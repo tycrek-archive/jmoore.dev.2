@@ -14,10 +14,10 @@ html(lang='en')
 						li: a.t-link(href='https://old.jmoore.dev/' target='_blank') Old site
 						li: a.t-link(href='/tutorials') Tutorials
 						li: a.t-link(href='/custom-totem') Custom Totem
-				.flex-grow.flex.justify-center.flex-wrap
+				.flex-grow.flex.justify-center.flex-wrap.filter#content
 					block content
 		// Pseudo-element for the menu classes in Tailwind JIT mode
-		.hidden.h-auto.mb-4: span &nbps;
+		.hidden.h-auto.mb-4.filter.blur-sm: span &nbps;
 	script.
 		hljs.highlightAll();
 
@@ -26,5 +26,6 @@ html(lang='en')
 			$('#menu-title').toggleClass('mb-4');
 			$('#menu-list').toggleClass('h-auto');
 			$('#menu-list').toggleClass('h-0');
+			$('#content').toggleClass('blur-sm');
 		});
 	style: include ../apps/a11y-syntax-highlighting/dist/highlight/a11y-dark.css
