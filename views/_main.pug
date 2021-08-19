@@ -16,6 +16,15 @@ html(lang='en')
 						li: a.t-link(href='/custom-totem') Custom Totem
 				.flex-grow.flex.justify-center.flex-wrap
 					block content
+		// Pseudo-element for the menu classes in Tailwind JIT mode
+		.hidden.h-auto.mb-4: span &nbps;
 	script.
 		hljs.highlightAll();
+
+		// Mobile button
+		$('.lg_hidden#menu-btn').on('click', () => {
+			$('#menu-title').toggleClass('mb-4');
+			$('#menu-list').toggleClass('h-auto');
+			$('#menu-list').toggleClass('h-0');
+		});
 	style: include ../apps/a11y-syntax-highlighting/dist/highlight/a11y-dark.css
