@@ -80,7 +80,7 @@ const cssPath = path('css/kek.css');
 const tailwindcss = require('tailwindcss')({
 	mode: 'jit',
 	separator: '_',
-	darkMode: 'media',
+	darkMode: 'class',
 	plugins: [
 		require('tailwindcss-textshadow')
 	],
