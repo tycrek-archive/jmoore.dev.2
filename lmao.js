@@ -67,6 +67,7 @@ app.use((_, res, next) => {
 // Static assets
 app.use(express.static(path('static')));
 app.use('/files', express.static(path('uploads')));
+app.use('/images', express.static(path('images')));
 
 // Custom totem router
 app.use('/custom-totem', require('./routers/custom-totem'));
