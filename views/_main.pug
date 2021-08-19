@@ -6,8 +6,10 @@ html(lang='en')
 		.flex.justify-center
 			.px-8.flex.justify-center.items-center.lg_items-start.flex-col.lg_flex-row(class='lg_w-3/4 2xl_w-2/3')
 				.sticky.top-8.article-card.mb-8.lg_mb-0.h-auto.lg_h-nav.max-w-min.lg_order-last.lg_ml-8.z-50
-					h2.article-title Links
-					ul.article-text.list-disc.list-inside.whitespace-nowrap
+					h2.article-title-links-ffs.mb-0.lg_mb-4.flex.flex-row
+						span.flex-grow.text-center.lg_text-left#menu-title Links
+						span.text-right.flex-grow-0.lg_hidden#menu-btn: i.fas.fa-caret-down.mx-4
+					ul.article-text.list-disc.list-inside.whitespace-nowrap.ok-this-does-not-exist.transition-all.overflow-hidden.h-0.lg_h-auto#menu-list
 						li: a.t-link(href='https://tycrek.com/' target='_blank') Contact me
 						li: a.t-link(href='https://old.jmoore.dev/' target='_blank') Old site
 						li: a.t-link(href='/tutorials') Tutorials

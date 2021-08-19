@@ -48,6 +48,10 @@
 	@apply font-header text-4xl text-shadow-sm dark_text-shadow-lg mb-4;
 }
 
+.article-title-links-ffs {
+	@apply font-header text-4xl text-shadow-sm dark_text-shadow-lg;
+}
+
 .article-text {
 	@apply text-lg text-shadow-sm font-light;
 }
