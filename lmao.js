@@ -144,14 +144,14 @@ const plugins = [
 app.get('/', (_, res) => res.render('index', { isProd }));
 
 // Compile CSS using PostCSS's JIT mode
-app.get('/css', (_, res) =>
+app.use('/css', (_req, res, next) =>
 	fs.readFile(cssPath)
 		.then((bytes) => postcss(plugins).process(bytes, { from: cssPath, to: cssPath }))
 		.then((result) => {
 			result.warnings().forEach((warn) => log.warn('PostCSS', warn.toString()));
 			res.type('css').send(result.css)
 		})
-		.catch(log.err));
+		.catch(next));
 
 // Set up redirects
 const makeRedir = (from, to) => app.get(`/${from}`, (_, res) => res.redirect(to));
