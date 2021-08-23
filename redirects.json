@@ -20,5 +20,9 @@
 	{
 		"from": "archive",
 		"to": "https://github.com/tycrek-archive/"
+	},
+	{
+		"from": "vpn",
+		"to": "https://mullvad.net/check/"
 	}
 ]
