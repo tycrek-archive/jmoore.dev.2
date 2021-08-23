@@ -29,6 +29,7 @@
   "bugs": "https://github.com/tycrek/jmoore.dev.2/issues",
   "homepage": "https://github.com/tycrek/jmoore.dev.2#readme",
   "dependencies": {
+    "@tycrek/express-postcss": "^0.1.0",
     "@tycrek/isprod": "^2.0.2",
     "@tycrek/log": "^0.5.6",
     "adm-zip": "^0.5.5",

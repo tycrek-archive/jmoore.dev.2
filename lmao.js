@@ -10,6 +10,7 @@ const fetch = require('node-fetch');
 const uaRedirect = require('express-ua-redirect');
 const fileUpload = require('express-fileupload');
 const session = require('express-session');
+const epcss = require('@tycrek/express-postcss');
 const MemoryStore = require('memorystore')(session)
 const { authenticator } = require('otplib');
 
@@ -144,14 +145,7 @@ const plugins = [
 app.get('/', (_, res) => res.render('index', { isProd }));
 
 // Compile CSS using PostCSS's JIT mode
-app.use('/css', (_req, res, next) =>
-	fs.readFile(cssPath)
-		.then((bytes) => postcss(plugins).process(bytes, { from: cssPath, to: cssPath }))
-		.then((result) => {
-			result.warnings().forEach((warn) => log.warn('PostCSS', warn.toString()));
-			res.type('css').send(result.css)
-		})
-		.catch(next));
+app.use('/css', epcss({ cssPath, plugins, warn: (warning) => log.warn('PostCSS', warning.toString()) }));
 
 // Set up redirects
 const makeRedir = (from, to) => app.get(`/${from}`, (_, res) => res.redirect(to));
