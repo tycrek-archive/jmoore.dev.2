@@ -5,13 +5,12 @@ const { log, isProd, path, randomHexValue } = require('./utils');
 // Imports
 const fs = require('fs-extra');
 const express = require('express');
-const postcss = require('postcss');
 const fetch = require('node-fetch');
 const uaRedirect = require('express-ua-redirect');
 const fileUpload = require('express-fileupload');
 const session = require('express-session');
 const epcss = require('@tycrek/express-postcss');
-const MemoryStore = require('memorystore')(session)
+const MemoryStore = require('memorystore')(session);
 const { authenticator } = require('otplib');
 
 // Load NPM for the autoupdater
