@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     ports:
       - "18235:18235"
+    volumes:
+      - ./uploads:/opt/jmoore.dev.2/uploads/
     tty: true
     environment:
       - NODE_ENV=production
