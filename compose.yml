@@ -1,0 +1,10 @@
+services:
+  jmooredev2:
+    build: .
+    container_name: jmoore.dev.2
+    restart: unless-stopped
+    ports:
+      - "18235:18235"
+    tty: true
+    environment:
+      - NODE_ENV=production
