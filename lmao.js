@@ -70,7 +70,8 @@ app.use('/files', express.static(path('uploads')));
 app.use('/images', express.static(path('images')));
 
 // Custom totem router
-app.use('/custom-totem', require('./routers/custom-totem'));
+// app.use('/custom-totem', require('./routers/custom-totem'));
+app.use('/custom-totem', (req, res, next) => res.redirect('https://totems.me/'));
 
 // Tutorials router
 app.use('/tutorials', require('./routers/tutorials'));
